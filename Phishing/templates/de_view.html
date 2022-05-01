@@ -1,0 +1,16 @@
+<html>
+    <body style="background-color: seagreen"> 
+    <div class="text-middle"> 
+        <!-- Create a Form -->
+        <center>
+           <form method="POST"> 
+            <!-- Security token by Django -->
+                   {% csrf_token %} 
+                   Are you want to delete this item ? 
+                   <input type="submit" value="Yes" /> 
+                   <a href="/">Cancel </a> 
+             </form> 
+         </center>
+    </div> 
+    </body>
+    </html>
