@@ -1,0 +1,20 @@
+<html>
+    <head>
+        <title>Predict page</title>
+    </head>
+    <body>
+        <div class="myDiv">
+            {% if y_pred == '1' %}
+                 <h1 align="center" style="color:rgb(27, 26, 26)" background-color="red" >It is {{ ys }} Safe to go  !!</h1>
+            {% else %}
+                 <h1 align="center" style="color:rgb(38, 36, 36)" background-color="red" >It is {{ yp }} UnSafe to go  !!</h1>
+            {% endif %}
+
+        </div>
+
+        
+
+
+    </body>
+</html>
+

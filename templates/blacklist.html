@@ -1,0 +1,86 @@
+
+<html lang="en">
+ <head>
+    <title>
+       Blacklist
+    </title>
+   
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<style>
+      p,h2{
+        font-family: 'Times New Roman', Times, serif;
+       
+      }
+      table {
+    border-collapse: collapse;
+  }
+  th, td {
+    font-family: 'Times New Roman', Times, serif;
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+  }
+  tr:nth-child(even) {
+    font-family: 'Times New Roman', Times, serif;
+    background-color: #eee;
+  }
+  tr:nth-child(odd) {
+    font-family: 'Times New Roman', Times, serif;
+    background-color: #fff;
+  }            
+</style>
+</style>
+</head>
+<body >
+<div class="myDiv">
+  <center><h2 style="color:rgb(25, 24, 24)">BlackList Database</h2></center>
+</div>
+<br><br><br><br>
+<center>
+  <div>
+    
+
+  
+  <table  border="1" cellspacing="3" cellpadding="3"  class="table table-dark table-hover table-bordered" id="dataTable" width="200%" cellspacing="2">
+    <thead>
+               <th style="width:20% color=White">URL</th>
+               <th style="width:20%">SCORE</th>
+               <th style="width:20%">STATUS</th>
+               
+               <th style="width:20%">EDIT</th>
+                <th style="width:20%">DELETE</th>
+         </thead>
+         <tbody>
+            {% for i in course %}	
+
+        <tr>
+             
+             <td><p>{{i.url}}</p></td>
+             <td><p>{{i.score}}</p></td>	
+             
+             <td><p>{{i.status}}</p></td>
+             
+             <td data-column="DELETE"><button class="btn btn-danger"><a href="{% url 'updatee_view' i.id  %}"  style="color:white;">UPDATE</a></button></td	>		
+             <td data-column="DELETE"><button class="btn btn-danger"><a href="{% url 'de_view' i.id  %}"  style="color:white;">DELETE</a></button></td	>		
+             
+         </tr>
+            {% endfor %}
+
+
+              
+          </tbody>
+    </table>
+
+  </div>
+
+<h3><input type="button" class="btn btn-lg btn-success" color="blue" value="Print"  onClick="window.print()"></h3>
+</center>
+</body> 
+</html>

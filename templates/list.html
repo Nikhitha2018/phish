@@ -1,0 +1,65 @@
+{% extends 'index.html' %}
+{% block title %}DataBase{% endblock %}
+{% block content %}
+</br></br>
+<div class="container-fluid" style="margin-top: 2px;">
+  <div class="row">
+    <div class="col-md-12">
+      <form action="{% url 'search' %}" method="GET">
+        <input type="text" id="search" name="search" class="form-control mb-4" placeholder="Search" autocomplete="off" style="margin-top: 50px;">
+        <button type="submit" class="btn btn-primary" style="display: block;margin: 0 auto;">Search</button>
+      </form>
+    </div>
+  </div>
+  <div class="row" style="margin-bottom: 7rem;margin-top: 1rem;">
+    <div class="col-md-6 " style="margin: 0 auto;">
+      {% for url in urls %}
+      <!-- Card -->
+      <div class="card" style="margin-top: 1rem;">
+        <div class="card-body">
+
+          <!-- Title -->
+          <h6 class="card-title" style="text-align: center;"><a href="{{url.link}}" >{{url.link}}</a></h6>
+          <!-- Text -->
+          <p class="card-text"><strong>Result :</strong>  {{url.result}}</p>
+          <!-- Button -->
+          <p class="card-text"><strong>Address :</strong>  {{url.add}}</p>
+
+          <p class="card-text"><strong>Organization :</strong>  {{url.org}}</p>
+
+          <p class="card-text"><strong>State :</strong>  {{url.state}}</p>
+
+          <p class="card-text"><strong>City :</strong>  {{url.city}}</p>
+
+          <p class="card-text"><strong>Country :</strong>  {{url.country}}</p>
+
+          <p class="card-text"><strong>Domain :</strong>  {{url.dom}}</p>
+
+          <p class="card-text"><strong>Emails :</strong>  {{url.emails}}</p>
+
+          <p class="card-text"><strong>Rank :</strong>  {{url.rank}}</p>
+
+          <p class="card-text"><strong>Website Age :</strong>  {{url.domage}}</p>
+
+          <p class="card-text"><strong>Abnormal URL Status :</strong>  {{url.varab}}</p>
+
+          <p class="card-text"><strong>Redirects Status :</strong>  {{url.redir}}</p>
+
+          <p class="card-text"><strong>Registrar :</strong>  {{url.registrar}}</p>
+
+          <p class="card-text"><strong>Status @ :</strong>  {{url.var3}}</p>
+
+          <p class="card-text"><strong>Status Prefix-Suffix :</strong>  {{url.var5}}</p>
+
+          <p class="card-text"><strong>Detected IP Address :</strong>  {{url.ipadd}}</p>
+
+
+
+
+          <p class="card-text"><strong>Created at :</strong>  {{url.created_at}}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% endblock %}

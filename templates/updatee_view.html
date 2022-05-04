@@ -1,0 +1,57 @@
+{% extends 'index.html' %}
+{% block title %}Edit URL Page{% endblock %}
+{% block content %}
+<html>
+<head>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Edit URL</title>
+
+      {% load static %}
+    <!-- Bootstrap core CSS-->
+    <link href="{% static '/info/bootstrap/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- Custom fonts for this template-->
+    <link href="{% static '/info/bootstrap/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+    <!-- Custom styles for this template-->
+    <link href="{% static '/info/bootstrap/css/sb-admin.css' %}" rel="stylesheet">
+</head>
+  <body >
+      
+    <center><div class="myDiv">
+      <div class="card-header text-center text-primary " style="background-color:Blue" >
+        <h1 style="color:white">Edit URL here !!</h1>
+       
+       </div>
+       
+        
+              
+       
+        <div class="card">
+          <form method="POST"> 
+            <!-- Security token by Django -->
+            {% csrf_token %} 
+      
+            <!-- form as paragraph -->
+            {{ form.as_p }} 
+      
+          <h2><input class="btn btn-lg btn-success" type="submit" value="Update"></h2>
+          </form> 
+        </div>
+       
+    
+   
+    </div></center>
+       
+         
+       
+	    {% endblock %}
+    </body>
+</html>
+
+
+

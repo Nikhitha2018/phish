@@ -1,0 +1,245 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Bootstrap CSS -->
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+  <!-- Bootstrap core CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.10.1/css/mdb.min.css" rel="stylesheet">
+  <link rel="icon" href="{%static '46-512.png' %}" type="image/png">
+  <title>{% block title %}Malicious URL Detector{% endblock %}</title>
+  <style type=text/css>   
+    body   
+    {  
+    height: 125vh;  
+    margin-top: 80px;  
+    padding: 20px;  
+    background-size: cover;  
+    font-family: sans-serif;  
+    }  
+    header {  
+    background-color: orange;  
+    position: fixed;  
+    left: 0;  
+    right: 0;  
+    top: 5px;  
+    height: 20px;  
+    display: flex;  
+    align-items: center;  
+    box-shadow: 0 0 25px 0 black;  
+    }  
+    header * {  
+    display: inline;  
+    font-size:20px ;
+    font-family: 'Times New Roman', Times, serif;
+    }  
+    header li {  
+    margin: 20px;  
+    font-size:20px ;
+    font-family: 'Times New Roman', Times, serif;
+    }  
+    header li a {  
+    color: blue;  
+    text-decoration: none;  
+    font-size:20px ;
+    font-family: 'Times New Roman', Times, serif;
+    }  
+    a{
+      font-size:20px ;
+      font-family: 'Times New Roman', Times, serif;
+    }
+    p{
+      font-size:25px;
+      color:rgb(12, 12, 12);
+      font-family:'Times New Roman', Times, serif;
+    }
+    h1{
+      font-family:'Times New Roman', Times, serif;
+      background-color: green;
+    }
+    h4{
+      font-size:20px;
+      font-family: 'Times New Roman', Times, serif;
+    }
+    .myDiv {
+      width: 500px;
+  height: 100px;    
+  text-align: center;
+  
+}
+    h5{
+      font-size:14px;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    </style>   
+</head>
+<body style="background-image: url(static/wpcy.jpg);background-repeat: no-repeat;
+background-position: center;
+background-attachment: fixed;background-size: cover;">
+
+  <nav class="navbar navbar-expand-lg navbar-inverse fixed-top scrolling-navbar">
+    <div class="container-fluid">
+      <div class="header">
+          <h2 style="color:white">MALICIOUS URL DETECTION SYSTEM</h2>
+
+      </div>
+    
+      <ul class="nav navbar-nav">
+      
+        <li class="nav-item">
+          <a class="active" href="/">Home
+            <span class="sr-only">(current)</span>
+          </a>
+        </li><br><br><br>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'about' %}">About</a>
+        </li>
+        <br>
+
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'geturlhistory' %}">URL Database</a>
+        </li><br>
+       
+        <br>
+        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Blacklist <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="{% url 'addcourse' %}">Add URL</a></li>
+            <li><a href="{% url 'showblack' %}">Show Database</a></li>
+            <li><a href="#">Page 1-3</a></li>
+          </ul>
+        </li>
+      </ul>
+     
+     
+    </div>
+  </nav>
+ 
+  
+  
+      <!-- Links -->
+
+
+    
+  
+  <!--/.Navbar-->
+</br>
+  {% block content %}
+  <form action="{%  url 'result'  %}" autocomplete="off">
+  <div class="container-fluid" style="margin-top: 1rem;">
+    <div class="row">
+      <div class="col-md-12">
+        <!-- Section -->
+        <section>
+
+          <i class="fad fa-sack-dollar"
+            style="margin:0 auto;display: block;text-align: center;font-size: 6rem;color:red"></i>
+
+          <!--First row-->
+          <div class="row d-flex justify-content-center">
+
+
+            <div class="col-md-12 col-lg-12 mb-4">
+
+              <!-- Material outline input -->
+             
+              <div class="row">
+                <div class="col-md-12">
+                    <!--Mask with wave-->
+                    <div class="view overlay">
+                      
+                                <img src="/static/1.png" class="img-fluid" alt="Sample image with waves effect." style="margin: 0 auto;
+                    margin-top: 60px;height: 20rem;animation: cubic-bezier;animation-duration: 0.9s;animation-delay: 1500ms;">
+                            
+                            
+                       
+                    
+                    </div>
+                </div>
+            </div>
+          </br>
+        </br>
+          
+        
+          <div class="container">
+            <input type="text" name="url" class="form-control form-control-lg" name="url" placeholder="Enter Suspected Url in valid format  " style="border: groove;" required>
+          </div>
+
+            </div>
+            <br><br><br>
+            <div class="col-md-12 col-lg-12 mb-4">
+
+              <button type="submit" class="btn btn-lg btn-danger btn-rounded" style="display: block;margin: 0 auto;">Detect</button>
+
+            </div>
+
+          </div>
+          <!--First row-->
+
+        </section>
+        <!-- Section -->
+      </div>
+      </form>
+    </div>
+
+
+
+   
+
+
+
+
+
+    
+    {% endblock %}
+    <div class="container-fluid">
+      <!-- Footer -->
+      <footer class="page-footer font-small blue fixed-bottom">
+        <!-- Copyright -->
+        
+        <!-- Copyright -->
+      </footer>
+      <!-- Footer -->
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <!-- JQuery -->
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.10.1/js/mdb.min.js"></script>
+      <script type="text/javascript">
+        $(document).ready(function () {
+            //Preloader
+            preloaderFadeOutTime = 1200;
+            function hidePreloader() {
+                var preloader1 = $('.spinner-border');
+                var preloader2 = $('#card');
+
+                preloader1.fadeOut(preloaderFadeOutTime);
+                preloader2.fadeOut(preloaderFadeOutTime);
+
+
+            }
+            hidePreloader();
+        });
+    </script>
+</body>
+
+</html>
