@@ -105,6 +105,43 @@ import geocoder
 import whois
 import datetime
 
+import numpy as np
+import pandas as pd
+from sklearn import metrics 
+import pickle
+import warnings
+warnings.filterwarnings('ignore')
+
+# Gradient Boosting Classifier Model
+from sklearn.ensemble import GradientBoostingClassifier
+
+data = pd.read_csv("C:/Users/hp/desktop/project/urldata.csv")
+#droping index column
+data = data.drop(['Domain'],axis = 1)
+# Splitting the dataset into dependant and independant fetature
+
+y = data['Label'].values
+X = data.drop('Label',axis=1).values 
+
+from sklearn.model_selection import train_test_split
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 12)
+gbc = GradientBoostingClassifier(max_depth=4,learning_rate=0.7)
+gbc.fit(X,y)
+y_pred =gbc.predict(X)[0]
+        
+y_pro_phishing = gbc.predict_proba(X)[0,0]
+y_pro_non_phishing = gbc.predict_proba(X)[0,1]
+    # save the model to disk
+filename = 'finalized_model_gb.sav'
+pickle.dump(gbc, open(filename, 'wb'))
+loaded_model = pickle.load(open(filename, 'rb'))
+result = loaded_model.score(X_test, y_test)
+def predict(request):
+        return render(request,'predict.html')
+    
+    
+
 
 def result(request):
     text=request.GET['url'].lower()
@@ -322,11 +359,14 @@ def result(request):
 
 
                 filename = 'phish_trainedv7mud0.001.sav'
+                #filename = 'finalized_model_gb.sav'
 
                 loaded_model = joblib.load(filename)
+                
 
                 arg=loaded_model.predict(([[oneval,secval,thirdval,fourthval,fifthval,seventhval,eighthval,ninthval,tenthval,eleventhval,twelthval,thirt]]))
                 #print (arg[0])
+                print(arg[0])
                 import whois
                 url=text
                 
@@ -364,8 +404,8 @@ def result(request):
                     dom="Not Found"
                     registrar="Not Found"
 
-                
-                    
+               
+        
 
                 if aburl==-1 and rank==-1 :
                     arg[0]=-1

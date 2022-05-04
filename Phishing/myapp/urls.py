@@ -23,6 +23,7 @@ urlpatterns = [
     path('showblack',views.showblack,name="showblack"),
     path('updatee_view/<int:id>',views.updatee_view,name='updatee_view' ),
     path('de_view/<int:id>',views.de_view,name='de_view'),
+    path('predict/',views.predict,name='predict'),
   
 ]
 
