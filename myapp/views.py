@@ -27,6 +27,17 @@ import whois
 from datetime import date, datetime
 import time
 from dateutil.parser import parse as date_parse
+import pandas as pd
+from urllib.parse import urlparse
+import re
+from bs4 import BeautifulSoup
+import whois
+import urllib.request
+import time
+import socket
+from urllib.error import HTTPError
+from datetime import  datetime
+
 
 
 
@@ -139,8 +150,7 @@ loaded_model = pickle.load(open(filename, 'rb'))
 result = loaded_model.score(X_test, y_test)
 def predict(request):
         return render(request,'predict.html')
-    
-    
+
 
 
 def result(request):
@@ -868,8 +878,6 @@ def api(request):
 
 
 
-
-
        
 def geturlhistory(request):
     try:
@@ -900,11 +908,6 @@ def search(request):
     except:
         return render(request,'404.html')
 
-def page(request):
-    try:
-        return render(request,'page.html')
-    except:
-        return render(request,'404.html')
 
 
 
